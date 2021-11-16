@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+task hello{
+	doLast{
+		println "hello"
+	}
+}
+
+task copyGradle(type: Copy){
+	from 'gradlew'
+	into 'target'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+}
