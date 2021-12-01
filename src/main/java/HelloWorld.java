@@ -9,4 +9,9 @@ public class HelloWorld {
     public void test(){
         StringUtils.isEmpty("string");
     }
+
+    public static void main(String[] args) {
+        boolean test = StringUtils.isEmpty("string");
+        System.out.println(test);
+    }
 }
