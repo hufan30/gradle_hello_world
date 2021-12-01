@@ -2,15 +2,15 @@ import com.sun.tools.javac.util.StringUtils
 
 apply plugin: 'java'
 
-task hello{
-	doLast{
-		println "hello"
-	}
+task hello {
+    doLast {
+        println "hello"
+    }
 }
 
-task copyGradle(type: Copy){
-	from 'gradlew'
-	into 'target'
+task copyGradle(type: Copy) {
+    from 'gradlew'
+    into 'target'
 }
 
 //在～/.gradle/init.gradle中定义了全局阿里云镜像仓库
@@ -20,29 +20,31 @@ task copyGradle(type: Copy){
 
 dependencies {
 // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
 }
 
-task printParam{
-	doLast {
-		println "print param AAA is $AAA"
-	}
+task printParam {
+    doLast {
+        println "print param AAA is $AAA"
+    }
 }
 
-buildscript{
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
-	}
-}
+//buildscript{
+//	repositories {
+//		mavenCentral()
+//	}
+//	dependencies {
+//		classpath group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+//	}
+//}
+//
+////在使用了buildscript之后，下面import报错不影响build.gradle使用
+//import org.apache.commons.lang3.StringUtils
+//
+//task print{
+//	doLast {
+//		println StringUtils.isBlank(" ")
+//	}
+//}
 
-//在使用了buildscript之后，下面import报错不影响build.gradle使用
-import org.apache.commons.lang3.StringUtils
-
-task print{
-	doLast {
-		println StringUtils.isBlank(" ")
-	}
-}
+apply from: "print.gradle"
