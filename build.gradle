@@ -48,3 +48,7 @@ task printParam {
 //}
 
 apply from: "print.gradle"
+
+
+//这里是从buildSrc里面引入的插件
+apply plugin: Myplugin
